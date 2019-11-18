@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Flights</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1 style="margin-left:13px">Flights</h1>
+    </div>
+
+            <form class="form-inline" action="flights" method="post">
+
+                <p class="h4" style="margin-right:7px; float:left;">Feature: </p>
+
+                <select class="form-control" style="margin-left:6px; float:left;" name="feature">
+                    <option value="CHOOSE ONE">CHOOSE ONE</option>
+                    <option value="flt_no">FLIGHT NO</option>
+                    <option value="departuer_date">DEPARTURE DATE</option>
+                    <option value="dep_port">DEPARTURE PORT</option>
+                    <option value="arr_port">ARRIVAL PORT</option>
+                    <option value="status">STATUS</option>
+                </select>
+
+
+
+                <div class="input-group" style="margin-left:20px">
+                    <input type="text" class="form-control" id="typedText" name="typedText" placeholder="Search" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                </div>
+
+                <input type="submit" class="btn btn-dark" value="Search"/>
+
+            </form>
+
+
+
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">FLIGHT NO</th>
+                <th scope="col">DEPARTURE DATE</th>
+                <th scope="col">DEPARTURE PORT</th>
+                <th scope="col">ARRIVAL PORT</th>
+                <th scope="col">STATUS</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="flight:${flights}">
+                <tr>
+                    <td th:text="${flight.flt_no}"/>
+                    <td th:text="${flight.departuer_date}"/>
+                    <td th:text="${flight.dep_port}"/>
+                    <td th:text="${flight.arr_port}"/>
+                    <td th:text="${flight.status}"/>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
